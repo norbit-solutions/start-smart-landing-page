@@ -2,19 +2,19 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: white;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-montserrat);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: white;
     --foreground: #ededed;
   }
 }
@@ -22,5 +22,70 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
 }
+
+
+.container{
+  @apply px-6 md:px-10 lg:px-16
+}
+
+.title {
+  @apply text-3xl md:text-5xl lg:text-6xl
+}
+
+
+.description {
+  @apply text-sm md:text-base lg:text-lg 
+}
+
+ .bubble-menu .menu-line {
+          transition: transform 0.3s ease, opacity 0.3s ease;
+          transform-origin: center;
+        }
+        .bubble-menu-items .pill-list .pill-col:nth-child(4):nth-last-child(2) {
+          margin-left: calc(100% / 6);
+        }
+        .bubble-menu-items .pill-list .pill-col:nth-child(4):last-child {
+          margin-left: calc(100% / 3);
+        }
+        @media (min-width: 900px) {
+          .bubble-menu-items .pill-link {
+            transform: rotate(var(--item-rot));
+          }
+          .bubble-menu-items .pill-link:hover {
+            transform: rotate(var(--item-rot)) scale(1.06);
+            background: var(--hover-bg) !important;
+            color: var(--hover-color) !important;
+          }
+          .bubble-menu-items .pill-link:active {
+            transform: rotate(var(--item-rot)) scale(.94);
+          }
+        }
+        @media (max-width: 899px) {
+          .bubble-menu-items {
+            padding-top: 120px;
+            align-items: flex-start;
+          }
+          .bubble-menu-items .pill-list {
+            row-gap: 16px;
+          }
+          .bubble-menu-items .pill-list .pill-col {
+            flex: 0 0 100% !important;
+            margin-left: 0 !important;
+            overflow: visible;
+          }
+          .bubble-menu-items .pill-link {
+            font-size: clamp(1.2rem, 3vw, 4rem);
+            padding: clamp(1rem, 2vw, 2rem) 0;
+            min-height: 80px !important;
+          }
+          .bubble-menu-items .pill-link:hover {
+            transform: scale(1.06);
+            background: var(--hover-bg);
+            color: var(--hover-color);
+          }
+          .bubble-menu-items .pill-link:active {
+            transform: scale(.94);
+          }
+        }
