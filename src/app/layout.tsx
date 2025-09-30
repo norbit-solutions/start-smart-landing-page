@@ -9,7 +9,6 @@ import { Montserrat } from "next/font/google";
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-montserrat", // Define a CSS variable name
 });
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,10 +32,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable}  antialiased`}>
+      <body className={`${montserrat}  antialiased`}>
         <Header />
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );

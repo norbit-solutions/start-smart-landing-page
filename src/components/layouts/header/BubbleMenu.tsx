@@ -83,6 +83,7 @@ export default function BubbleMenu({
   staggerDelay = 0.12,
 }: BubbleMenuProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
 
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -92,9 +93,9 @@ export default function BubbleMenu({
   const menuItems = items?.length ? items : DEFAULT_ITEMS;
 
   const containerClassName = [
-    "bubble-menu",
+    `bubble-menu ${scrolled ? 'bg-white/50 transform duration-400':'bg-transparent transform duration-300'}`,
     useFixedPosition ? "fixed" : "absolute",
-    "left-0 right-0 top-8",
+    "left-0 right-0 py-8",
     "flex items-center justify-between",
     "gap-4 px-8",
     "pointer-events-none",
@@ -182,56 +183,35 @@ export default function BubbleMenu({
     return () => window.removeEventListener("resize", handleResize);
   }, [isMenuOpen, menuItems]);
 
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      setScrolled(offset > 50); // change 50 to any scroll threshold
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
   return (
     <>
       <nav
         className={containerClassName}
         style={style}
-        aria-label="Main navigation"
+        aria-label="Main navigation bg-black"
       >
         <div
-          className={[
-            "bubble logo-bubble",
-            "inline-flex items-center justify-center",
-            "rounded-full",
-            "bg-white",
-            "shadow-[0_4px_16px_rgba(0,0,0,0.12)]",
-            "pointer-events-auto",
-            "h-12 md:h-14",
-            "px-4 md:px-8",
-            "gap-2",
-            "will-change-transform",
-          ].join(" ")}
-          aria-label="Logo"
-          style={{
-            background: menuBg,
-            minHeight: "48px",
-            borderRadius: "9999px",
-          }}
+         className="flex items-center justify-center"
         >
-          <span
-            className={[
-              "logo-content",
-              "inline-flex items-center justify-center",
-              "w-[120px] h-full",
-            ].join(" ")}
-            style={
-              {
-                ["--logo-max-height"]: "60%",
-                ["--logo-max-width"]: "100%",
-              } as CSSProperties
-            }
-          >
-            {typeof logo === "string" ? (
-              <img
-                src={logo}
-                alt="Logo"
-                className="bubble-logo max-h-[60%] max-w-full object-contain block"
-              />
-            ) : (
-              logo
-            )}
-          </span>
+          
+          <h1 className={`text-3xl  font-bold tracking-widest italic ${scrolled ? "text-blue-800" : "text-white"}`}>
+            Start Smart
+          </h1>
         </div>
 
         <button
@@ -281,7 +261,7 @@ export default function BubbleMenu({
         <div
           ref={overlayRef}
           className={[
-            "bubble-menu-items",
+            "bubble-menu-items bg-black/60",
             useFixedPosition ? "fixed" : "absolute",
             "inset-0",
             "flex items-center justify-center",
@@ -296,7 +276,7 @@ export default function BubbleMenu({
               "list-none m-0 px-6",
               "w-full max-w-[1600px] mx-auto",
               "flex flex-wrap",
-              "gap-x-0 gap-y-1",
+              "gap-x-0 gap-y-12",
               "pointer-events-auto",
             ].join(" ")}
             role="menu"

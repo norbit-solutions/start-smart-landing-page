@@ -6,7 +6,7 @@ export default function Home() {
     <div className="flex flex-col">
       <Banner />
       <Courses />
-      <CourseCardSection />
+      {/* <CourseCardSection /> */}
     </div>
   );
 }

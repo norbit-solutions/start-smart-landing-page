@@ -9,7 +9,7 @@ function Header() {
       href: "#",
       ariaLabel: "Home",
       rotation: -8,
-      hoverStyles: { bgColor: "#3b82f6", textColor: "#ffffff" },
+      hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
     },
     {
       label: "About",
@@ -23,26 +23,26 @@ function Header() {
       href: "#",
       ariaLabel: "Courses",
       rotation: 8,
-      hoverStyles: { bgColor: "#f59e0b", textColor: "#ffffff" },
+      hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
     },
     {
       label: "Faculties",
       href: "#",
       ariaLabel: "Faculties",
       rotation: 8,
-      hoverStyles: { bgColor: "#ef4444", textColor: "#ffffff" },
+      hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
     },
     {
       label: "Contact",
       href: "#",
       ariaLabel: "Contact",
       rotation: -8,
-      hoverStyles: { bgColor: "#8b5cf6", textColor: "#ffffff" },
+      hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
     },
   ];
 
   return (
-    <div className="w-full bg-white ">
+    <div className="w-full ">
       <BubbleMenu
         logo={<span style={{ fontWeight: 700 }}>RB</span>}
         items={menuList}
