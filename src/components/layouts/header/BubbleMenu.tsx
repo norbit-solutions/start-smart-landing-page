@@ -3,6 +3,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import Link from "next/link";
 
 type MenuItem = {
   label: string;
@@ -93,9 +94,13 @@ export default function BubbleMenu({
   const menuItems = items?.length ? items : DEFAULT_ITEMS;
 
   const containerClassName = [
-    `bubble-menu ${scrolled ? 'bg-white/50 transform duration-400':'bg-transparent transform duration-300'}`,
+    `bubble-menu ${
+      scrolled
+        ? "bg-white/50 transform duration-400"
+        : "bg-transparent transform duration-300"
+    }`,
     useFixedPosition ? "fixed" : "absolute",
-    "left-0 right-0 py-8",
+    "left-0 right-0 lg:py-8 py-4",
     "flex items-center justify-between",
     "gap-4 px-8",
     "pointer-events-none",
@@ -183,20 +188,18 @@ export default function BubbleMenu({
     return () => window.removeEventListener("resize", handleResize);
   }, [isMenuOpen, menuItems]);
 
-
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
       setScrolled(offset > 50); // change 50 to any scroll threshold
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
 
   return (
     <>
@@ -205,11 +208,12 @@ export default function BubbleMenu({
         style={style}
         aria-label="Main navigation bg-black"
       >
-        <div
-         className="flex items-center justify-center"
-        >
-          
-          <h1 className={`text-3xl  font-bold tracking-widest italic ${scrolled ? "text-blue-800" : "text-white"}`}>
+        <div className="flex items-center justify-center">
+          <h1
+            className={`lg:text-3xl text-base  font-bold tracking-widest italic ${
+              scrolled ? "text-blue-800" : "text-white"
+            }`}
+          >
             Start Smart
           </h1>
         </div>
@@ -224,7 +228,7 @@ export default function BubbleMenu({
             "bg-white",
             "shadow-[0_4px_16px_rgba(0,0,0,0.12)]",
             "pointer-events-auto",
-            "w-12 h-12 md:w-14 md:h-14",
+            "w-6 h-6 md:w-14 md:h-14",
             "border-0 cursor-pointer p-0",
             "will-change-transform",
           ].join(" ")}
@@ -234,20 +238,16 @@ export default function BubbleMenu({
           style={{ background: menuBg }}
         >
           <span
-            className="menu-line block mx-auto rounded-[2px]"
+            className="menu-line block mx-auto rounded-[2px] h-[1px] w-3 lg:w-6 md:w-4"
             style={{
-              width: 26,
-              height: 2,
               background: menuContentColor,
               transform: isMenuOpen ? "translateY(4px) rotate(45deg)" : "none",
             }}
           />
           <span
-            className="menu-line short block mx-auto rounded-[2px]"
+            className="menu-line short block mx-auto rounded-[2px] h-[1px] w-3 lg:w-6 md:w-4"
             style={{
               marginTop: "6px",
-              width: 26,
-              height: 2,
               background: menuContentColor,
               transform: isMenuOpen
                 ? "translateY(-4px) rotate(-45deg)"
@@ -293,9 +293,12 @@ export default function BubbleMenu({
                   "box-border",
                 ].join(" ")}
               >
-                <a
+                <Link
                   role="menuitem"
                   href={item.href}
+                  onClick={() => {
+                    handleToggle();
+                  }}
                   aria-label={item.ariaLabel || item.label}
                   className={[
                     "pill-link",
@@ -347,7 +350,7 @@ export default function BubbleMenu({
                   >
                     {item.label}
                   </span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

@@ -20,7 +20,7 @@ function Header() {
     },
     {
       label: "Courses",
-      href: "#",
+      href: "#course",
       ariaLabel: "Courses",
       rotation: 8,
       hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },

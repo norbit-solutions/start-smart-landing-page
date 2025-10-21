@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat}  antialiased`}>
+      <body className={`${montserrat}  antialiased !scroll-smooth`}>
         <Header />
         {children}
         {/* <Footer /> */}
