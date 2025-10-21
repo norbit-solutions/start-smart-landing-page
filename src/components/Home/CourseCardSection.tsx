@@ -1,5 +1,14 @@
 import Image from "next/image";
 
+interface CourseCardProps {
+  image?: string;
+  title?: string;
+  price?: string;
+  lessons?: number;
+  tutor?: string;
+  time?: string;
+}
+
 export default function CourseCardSection({
   image = "/images/ban.jpg",
   title = "React for Beginners",
@@ -7,22 +16,34 @@ export default function CourseCardSection({
   lessons = 24,
   tutor = "Jane Doe",
   time = "12 hours",
-}) {
+}: CourseCardProps) {
   return (
-    <div className="bg-white rounded-xl h-120 shadow-md w-100 overflow-hidden ">
+    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full">
       {/* Product Image */}
-      <div className="relative w-full h-68">
-        <Image src={image} alt={title} fill className="object-cover" />
+      <div className="relative w-full h-48 sm:h-56 md:h-64">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
       </div>
       {/* Info Section */}
-      <div className="p-10 flex flex-col gap-2">
-        <div className="text-base font-bold text-gray-800">{title}</div>
-        <div className="text-lg font-semibold text-blue-700">{price}</div>
-        <div className="flex items-center gap-3 text-sm text-gray-500">
-          <span>📚 {lessons} lessons</span>
-          <span>⏱ {time}</span>
+      <div className="p-4 sm:p-6 flex flex-col gap-2 sm:gap-3">
+        <div className="text-sm sm:text-base font-bold text-gray-800 line-clamp-2 min-h-[2.5rem]">
+          {title}
         </div>
-        <div className="text-xs font-medium text-gray-400 pt-2">👤 {tutor}</div>
+        <div className="text-base sm:text-lg font-semibold text-blue-700">
+          {price}
+        </div>
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-500">
+          <span className="flex items-center gap-1">📚 {lessons} lessons</span>
+          <span className="flex items-center gap-1">⏱ {time}</span>
+        </div>
+        <div className="text-xs font-medium text-gray-400 pt-1 sm:pt-2 flex items-center gap-1">
+          👤 {tutor}
+        </div>
       </div>
     </div>
   );
