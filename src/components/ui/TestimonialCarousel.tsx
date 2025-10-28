@@ -29,7 +29,7 @@ const Testimonial = ({
 
   const xRef = useRef(0);
   const yRef = useRef(0);
-  const frameRef = useRef<number>();
+  const frameRef = useRef<number>(0);
 
   useEffect(() => {
     const animate = () => {
@@ -205,7 +205,7 @@ export default function TestimonialCarousel({
 
   return (
     <div
-      className="relative w-[90vw] md:w-[70vmin] h-[60vmin] md:h-[70vmin] mx-auto"
+      className="relative w-[90vw] md:w-[70vmin] h-[60vmin] md:h-[40vmin] mx-auto"
       aria-labelledby={`testimonial-carousel-heading-${id}`}
     >
       <ul
@@ -225,7 +225,7 @@ export default function TestimonialCarousel({
         ))}
       </ul>
 
-      <div className="absolute flex justify-center w-full top-[calc(100%+0.5rem)] md:top-[calc(100%+1rem)]">
+      <div className="absolute flex justify-center w-full top-[calc(80%+0.5rem)] md:top-[calc(80%+1rem)]">
         <CarouselControl
           type="previous"
           title="Go to previous testimonial"

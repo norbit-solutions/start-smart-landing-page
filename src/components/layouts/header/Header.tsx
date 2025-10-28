@@ -11,13 +11,13 @@ function Header() {
       rotation: -8,
       hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
     },
-    {
-      label: "About",
-      href: "#",
-      ariaLabel: "About",
-      rotation: 8,
-      hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
-    },
+    // {
+    //   label: "About",
+    //   href: "#",
+    //   ariaLabel: "About",
+    //   rotation: 8,
+    //   hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
+    // },
     {
       label: "Courses",
       href: "#course",
@@ -27,14 +27,14 @@ function Header() {
     },
     {
       label: "Faculties",
-      href: "#",
+      href: "#faculties",
       ariaLabel: "Faculties",
       rotation: 8,
       hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
     },
     {
       label: "Contact",
-      href: "#",
+      href: "#footer",
       ariaLabel: "Contact",
       rotation: -8,
       hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },

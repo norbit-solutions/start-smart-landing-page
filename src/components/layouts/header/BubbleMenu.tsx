@@ -103,7 +103,7 @@ export default function BubbleMenu({
     "left-0 right-0 lg:py-8 py-4",
     "flex items-center justify-between",
     "gap-4 px-8",
-    "pointer-events-none",
+    // "pointer-events-none",
     "z-[1001]",
     className,
   ]
@@ -208,15 +208,17 @@ export default function BubbleMenu({
         style={style}
         aria-label="Main navigation bg-black"
       >
-        <div className="flex items-center justify-center">
-          <h1
-            className={`lg:text-3xl text-base  font-bold tracking-widest italic ${
-              scrolled ? "text-blue-800" : "text-white"
-            }`}
-          >
-            Start Smart
-          </h1>
-        </div>
+        <Link href={"/"}>
+          <div className="flex items-center justify-center">
+            <h1
+              className={`lg:text-3xl text-base  font-bold tracking-widest italic ${
+                scrolled ? "text-blue-800" : "text-white"
+              }`}
+            >
+              Start Smart
+            </h1>
+          </div>
+        </Link>
 
         <button
           type="button"
@@ -256,7 +258,6 @@ export default function BubbleMenu({
           />
         </button>
       </nav>
-
       {showOverlay && (
         <div
           ref={overlayRef}
