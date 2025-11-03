@@ -4,6 +4,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import Link from "next/link";
+import Image from "next/image";
 
 type MenuItem = {
   label: string;
@@ -210,13 +211,22 @@ export default function BubbleMenu({
       >
         <Link href={"/"}>
           <div className="flex items-center justify-center">
-            <h1
+            {/* <h1
               className={`lg:text-3xl text-base  font-bold tracking-widest italic ${
                 scrolled ? "text-blue-800" : "text-white"
               }`}
             >
               Start Smart
-            </h1>
+            </h1> */}
+            <div>
+              <Image
+                src={"/images/Logo.png"}
+                width={120}
+                height={60}
+                alt={"Logo"}
+                className="object-contain w-14 md:w-40"
+              />
+            </div>
           </div>
         </Link>
 
